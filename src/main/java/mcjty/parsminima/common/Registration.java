@@ -25,6 +25,10 @@ public class Registration {
     }
 
     public static final RegistryObject<MultipartBlock> MULTIPART_BLOCK = BLOCKS.register("multipart", MultipartBlock::new);
-    public static final RegistryObject<Item> MULTIPART_ITEM = ITEMS.register("multipart", () -> new MultipartItemBlock(MULTIPART_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MULTIPART_ITEM = ITEMS.register("multipart", () -> new MultipartBlockItem(MULTIPART_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<BlockEntityType<MultipartTE>> MULTIPART_TILE = TILES.register("multipart", () -> BlockEntityType.Builder.of(MultipartTE::new, MULTIPART_BLOCK.get()).build(null));
+
+    public static final RegistryObject<MultipartBlock> MINI_BLOCK = BLOCKS.register("mini", MultipartBlock::new);
+    public static final RegistryObject<Item> MINI_ITEM = ITEMS.register("mini", () -> new MultipartBlockItem(MINI_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockEntityType<MultipartTE>> MINI_TILE = TILES.register("mini", () -> BlockEntityType.Builder.of(MultipartTE::new, MINI_BLOCK.get()).build(null));
 }

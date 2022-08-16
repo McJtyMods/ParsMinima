@@ -94,8 +94,7 @@ public class MultipartBlock extends Block implements EntityBlock {
     private VoxelShape combinePartShapes(BlockGetter world, BlockPos pos, Function<BlockState, VoxelShape> shapeGetter) {
         VoxelShape combined = Shapes.empty();
         BlockEntity te = world.getBlockEntity(pos);
-        if (te instanceof MultipartTE) {
-            MultipartTE multipartTE = (MultipartTE) te;
+        if (te instanceof MultipartTE multipartTE) {
             for (Map.Entry<PartSlot, MultipartTE.Part> entry : multipartTE.getParts().entrySet()) {
                 MultipartTE.Part part = entry.getValue();
                 VoxelShape shape = shapeGetter.apply(part.getState());

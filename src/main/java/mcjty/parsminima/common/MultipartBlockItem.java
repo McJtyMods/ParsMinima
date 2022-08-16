@@ -22,13 +22,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class MultipartItemBlock extends BlockItem {
+public class MultipartBlockItem extends BlockItem {
 
-    public MultipartItemBlock(Block block) {
+    public MultipartBlockItem(Block block) {
         super(block, new Properties());
     }
 
-    public MultipartItemBlock(Block block, Properties properties) {
+    public MultipartBlockItem(Block block, Properties properties) {
         super(block, properties);
     }
 
