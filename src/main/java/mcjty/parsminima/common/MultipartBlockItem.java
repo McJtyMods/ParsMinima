@@ -3,6 +3,7 @@ package mcjty.parsminima.common;
 import mcjty.parsminima.ParsMinima;
 import mcjty.parsminima.api.IPartBlock;
 import mcjty.parsminima.api.PartSlot;
+import mcjty.parsminima.setup.Registration;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;

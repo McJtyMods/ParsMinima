@@ -3,6 +3,7 @@ package mcjty.parsminima.common;
 import mcjty.parsminima.api.IPartTile;
 import mcjty.parsminima.api.PartPos;
 import mcjty.parsminima.api.PartSlot;
+import mcjty.parsminima.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;

@@ -1,9 +1,8 @@
 package mcjty.parsminima.example;
 
-import mcjty.parsminima.common.Registration;
+import mcjty.parsminima.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class MiniTile extends BlockEntity {

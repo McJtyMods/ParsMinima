@@ -3,7 +3,9 @@ package mcjty.parsminima;
 import mcjty.parsminima.api.IParsMinima;
 import mcjty.parsminima.client.MultipartModelLoader;
 import mcjty.parsminima.common.ParsMinimaApi;
-import mcjty.parsminima.common.Registration;
+import mcjty.parsminima.setup.Registration;
+import mcjty.parsminima.setup.ModSetup;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -22,11 +24,14 @@ public class ParsMinima {
     public static ParsMinima instance;
     public final ParsMinimaApi api = new ParsMinimaApi();
 
+    public static final ModSetup setup = new ModSetup();
+
     public ParsMinima() {
         instance = this;
         Registration.init();
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(this::processIMC);
+        bus.addListener(setup::init);
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             bus.addListener(MultipartModelLoader::register);
@@ -34,6 +39,10 @@ public class ParsMinima {
 
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GeneralConfig.CLIENT_CONFIG);
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, GeneralConfig.SERVER_CONFIG);
+    }
+
+    public static <T extends Item> Supplier<T> tab(Supplier<T> supplier) {
+        return instance.setup.tab(supplier);
     }
 
     private void processIMC(final InterModProcessEvent event) {

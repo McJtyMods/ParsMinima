@@ -1,9 +1,11 @@
 package mcjty.parsminima.common;
 
+import mcjty.lib.varia.Tools;
 import mcjty.parsminima.ParsMinima;
 import mcjty.parsminima.api.IMultipart;
 import mcjty.parsminima.api.IPartTile;
 import mcjty.parsminima.api.PartSlot;
+import mcjty.parsminima.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -17,9 +19,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.client.model.ModelDataManager;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
@@ -67,7 +67,7 @@ public class MultipartTE extends BlockEntity implements IMultipart {
         for (Map.Entry<PartSlot, Part> entry : parts.entrySet()) {
             BlockState state = entry.getValue().state;
             System.out.println("    SLOT: " + entry.getKey().name() +
-                    "    " + state.getBlock().getRegistryName().toString());
+                    "    " + Tools.getId(state.getBlock()).toString());
             for (Property<?> property : state.getProperties()) {
                 System.out.println("        PROP: " + property + " = " + state.getValue(property));
             }
@@ -120,7 +120,7 @@ public class MultipartTE extends BlockEntity implements IMultipart {
             BlockState state = part.getState();
             Block block = state.getBlock();
             Collection<Property<?>> properties = state.getProperties();
-            System.out.println("        block: " + block.getRegistryName().toString());
+            System.out.println("        block: " + Tools.getId(block).toString());
             for (Property<?> property : properties) {
                 System.out.println("        property: " + property.getName() + " = " + state.getValue(property).toString());
             }
@@ -133,9 +133,9 @@ public class MultipartTE extends BlockEntity implements IMultipart {
 
     @Nonnull
     @Override
-    public IModelData getModelData() {
-        return new ModelDataMap.Builder()
-                .withInitial(PARTS, parts)
+    public ModelData getModelData() {
+        return ModelData.builder()
+                .with(PARTS, parts)
                 .build();
     }
 
@@ -144,7 +144,7 @@ public class MultipartTE extends BlockEntity implements IMultipart {
         int oldVersion = version;
         load(packet.getTag());
         if (level.isClientSide && version != oldVersion) {
-            ModelDataManager.requestModelDataRefresh(this);
+            requestModelDataUpdate();
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS + Block.UPDATE_NEIGHBORS);
         }
     }
