@@ -34,7 +34,7 @@ public class MultipartBlock extends Block implements EntityBlock {
     public static final AABB AABB_CENTER = new AABB(.4, .4, .4, .6, .6, .6);
 
     public MultipartBlock() {
-        super(Properties.of(Material.METAL)
+        super(Properties.of()
                 .strength(2.0f)
                 .noOcclusion()
                 .sound(SoundType.METAL));
