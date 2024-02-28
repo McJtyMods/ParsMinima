@@ -4,12 +4,12 @@ import mcjty.parsminima.api.IParsMinima;
 import mcjty.parsminima.client.MultipartModelLoader;
 import mcjty.parsminima.common.ParsMinimaApi;
 import mcjty.parsminima.common.Registration;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.api.distmarker.Dist;
+import net.neoforged.neoforge.eventbus.api.IEventBus;
+import net.neoforged.neoforge.fml.DistExecutor;
+import net.neoforged.neoforge.fml.common.Mod;
+import net.neoforged.neoforge.fml.event.lifecycle.InterModProcessEvent;
+import net.neoforged.neoforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

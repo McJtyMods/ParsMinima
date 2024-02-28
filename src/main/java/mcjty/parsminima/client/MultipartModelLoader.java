@@ -9,11 +9,11 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.IModelConfiguration;
-import net.minecraftforge.client.model.IModelLoader;
-import net.minecraftforge.client.model.ModelLoaderRegistry;
-import net.minecraftforge.client.model.geometry.IModelGeometry;
+import net.neoforged.neoforge.client.event.ModelRegistryEvent;
+import net.neoforged.neoforge.client.model.IModelConfiguration;
+import net.neoforged.neoforge.client.model.IModelLoader;
+import net.neoforged.neoforge.client.model.ModelLoaderRegistry;
+import net.neoforged.neoforge.client.model.geometry.IModelGeometry;
 
 import javax.annotation.Nonnull;
 import java.util.Collection;
