@@ -316,9 +316,14 @@ def modrinthKey = (project.findProperty('modrinth_token') ?: System.getenv('MODR
 
 tasks.named('publishCurseforge') {
     enabled = !curseKey.isEmpty()
+    dependsOn 'reobfJar'
 }
 tasks.named('publishModrinth') {
     enabled = false
+    dependsOn 'reobfJar'
+}
+tasks.named('publishMod') {
+    dependsOn 'reobfJar'
 }
 ['publishGitHub', 'publishNightbloom', 'publishModtale'].each { taskName ->
     def publishTask = tasks.findByName(taskName)
